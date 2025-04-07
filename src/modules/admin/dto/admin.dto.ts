@@ -22,11 +22,6 @@ export class AdminSignUp {
   })
   password: string;
 }
-export class Token {
-  @ApiProperty()
-  token: string;
-}
-
 export class AdminLogin {
   @ApiProperty()
   @IsEmail({}, { message: 'Invalid email format' })

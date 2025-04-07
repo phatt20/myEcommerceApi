@@ -2,7 +2,8 @@ import { Body, Controller, Post, ValidationPipe } from '@nestjs/common';
 import { AdminService } from './admin.service';
 import { ApiCreatedResponse } from '@nestjs/swagger';
 import { User } from '../users/entity/user.entity';
-import { AdminLogin, AdminSignUp, Token } from '../general-dto/general.dto';
+import { Token } from 'src/general-dto/general.dto';
+import { AdminLogin, AdminSignUp } from './dto/admin.dto';
 
 @Controller('admin')
 export class AdminController {

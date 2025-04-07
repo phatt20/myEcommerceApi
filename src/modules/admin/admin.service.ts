@@ -4,13 +4,13 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import * as bcrypt from 'bcryptjs';
-import { AdminSignUp } from '../general-dto/general.dto';
 import { User } from '../users/entity/user.entity';
 import { AppRole } from 'src/utils/enum';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { plainToInstance } from 'class-transformer';
 import { UserResponseDto } from '../users/dto/users.dto';
+import { AdminLogin, AdminSignUp } from './dto/admin.dto';
 
 @Injectable()
 export class AdminService {
@@ -62,7 +62,7 @@ export class AdminService {
     }
     return null;
   }
-  async login(data: { email: string; password: string }): Promise<any> {
+  async login(data: AdminLogin): Promise<any> {
     const { email, password } = data;
     const user = await this.validateUser(email, password);
     if (!user) throw new UnauthorizedException();
